@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     let motionManager = CMMotionManager()
     func startAccelerometer () {
-        motionManager.accelerometerUpdateInterval = 1
+        motionManager.accelerometerUpdateInterval = 0.02
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {
             (accelerData:CMAccelerometerData?, error: Error?) in
             if (error != nil ) {
@@ -36,11 +36,11 @@ class ViewController: UIViewController {
             } else {
                 
                 let accelX = accelerData?.acceleration.x
-                self.accelTagX.text = String(format: "%.02f", accelX!)
+                self.accelTagX.text = "X: " + String(format: "%.02f", accelX!)
                 let accelY = accelerData?.acceleration.y
-                self.accelTagY.text = String(format: "%.02f", accelY!)
+                self.accelTagY.text = "Y: " + String(format: "%.02f", accelY!)
                 let accelZ = accelerData?.acceleration.z
-                self.accelTagZ.text = String(format: "%.02f", accelZ!)
+                self.accelTagZ.text = "Z: " + String(format: "%.02f", accelZ!)
                 print("Accelerometer X: \(accelX!)")
             }
         })
